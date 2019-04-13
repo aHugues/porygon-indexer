@@ -1,5 +1,8 @@
 # Porygon Indexer
 
+[![Build Status](https://travis-ci.org/aHugues/porygon-indexer.svg?branch=master)](https://travis-ci.org/aHugues/porygon-indexer)
+[![codecov](https://codecov.io/gh/aHugues/porygon-indexer/branch/master/graph/badge.svg)](https://codecov.io/gh/aHugues/porygon-indexer)
+
 Indexer for the Porygon project deployed  in a **Docker** container setup with unit testing 
 with coverage testing and a production build using **gunicorn**.
 
