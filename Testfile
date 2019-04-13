@@ -6,6 +6,7 @@ ADD web /app/web
 ADD tests /app/tests
 COPY app.py /app
 COPY requirements.txt /app
+ADD .git /app/.git
 WORKDIR /app
 RUN pip install -r requirements.txt
 RUN pip install pytest pytest-flask pytest-cov codecov

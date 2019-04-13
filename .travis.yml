@@ -6,7 +6,5 @@ python:
 - '3.6'
 
 services: docker
-install: docker-compose -f test.yml build
-script: docker-compose -f test.yml -p ci run test python -m pytest --cov=web/ tests
-after_success:
-  - codecov
+install: docker-compose -f test.yml -p ci build
+script: docker-compose -f test.yml -p ci run test sh -c "python -m pytest --cov=web/ tests && pip freeze && codecov"
