@@ -7,6 +7,6 @@ python:
 
 services: docker
 install: docker-compose -f test.yml build
-script: docker-compose -f test.yml -p ci run test python -m pytest --cov=web/ tests
+script: docker-compose -f test.yml -p ci run test python -m pytest --cov=web/ tests && apk update && apk add git && codecov
 after_success:
   - codecov
