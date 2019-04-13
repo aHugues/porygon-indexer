@@ -8,6 +8,6 @@ COPY app.py /app
 COPY requirements.txt /app
 WORKDIR /app
 RUN pip install -r requirements.txt
-RUN pip install pytest pytest-flask pytest-cov
+RUN pip install pytest pytest-flask pytest-cov codecov
 
 # RUN python -m pytest --cov=web/ tests
