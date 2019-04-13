@@ -1,6 +1,6 @@
-# Default Flask server
+# Porygon Indexer
 
-Default Flask application in a **Docker** container setup with unit testing 
+Indexer for the Porygon project deployed  in a **Docker** container setup with unit testing 
 with coverage testing and a production build using **gunicorn**.
 
 ## Getting started
@@ -26,7 +26,7 @@ You can use Docker to build a development image:
 
 ```shell
 docker-compose build
-docker run -p 5000:5000 default-flask-app-dev:1.0.0
+docker run -p 5000:5000 porygon-indexer-dev:1.0.0
 ```
 
 ## Tests
@@ -72,7 +72,7 @@ docker-compose -f production.yml build
 The image can now be ran using 
 
 ```shell
-docker run -p 127.0.0.1:5000:5000 default-flask-app:1.0.0
+docker run -p 127.0.0.1:5000:5000 porygon-indexer:1.0.0
 ```
 
 Here again, you can replace `127.0.0.1:5000:5000` by `5000:5000` to make it 

@@ -1,7 +1,7 @@
 FROM python:3.6
 LABEL maintainer="Aurélien Hugues <aurelien.hugues.59@gmail.com>"
 LABEL version="1.0.0"
-LABEL description="Default Docker container for Flask"
+LABEL description="Indexer for the Porygon project"
 ADD web /app/web
 COPY app.py /app
 COPY requirements.txt /app
