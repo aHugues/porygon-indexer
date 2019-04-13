@@ -1,0 +1,12 @@
+test:
+  build: .
+  dockerfile: Testfile
+  links:
+    - web
+
+web:
+  build: .
+  dockerfile: Dockerfile
+  ports:
+    - "5000:5000"
+    

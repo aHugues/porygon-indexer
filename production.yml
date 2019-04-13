@@ -1,0 +1,10 @@
+version: '3'
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: Productionfile
+    ports:
+      - "127.0.0.1:5000:5000"
+    image: default-flask-app:1.0.0

@@ -1,0 +1,13 @@
+FROM python:3.6
+LABEL maintainer="Aurélien Hugues <aurelien.hugues.59@gmail.com>"
+LABEL version="1.0.0"
+LABEL description="Default Docker container for Flask"
+ADD web /app/web
+ADD tests /app/tests
+COPY app.py /app
+COPY requirements.txt /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+RUN pip install pytest pytest-flask pytest-cov
+
+# RUN python -m pytest --cov=web/ tests
