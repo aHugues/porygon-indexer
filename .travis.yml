@@ -7,4 +7,4 @@ python:
 
 services: docker
 install: docker-compose -f test.yml -p ci build
-script: docker-compose -f test.yml -p ci run test sh -c "python -m pytest --cov=web --cov=indexer tests && codecov"
+script: docker-compose -f test.yml -p ci run test sh -c "python -m pytest --cov=web --cov=indexer tests && codecov -b $TRAVIS_BRANCH"
