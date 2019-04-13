@@ -3,6 +3,8 @@ test:
   dockerfile: Testfile
   links:
     - web
+  environment:
+    - CODECOV_TOKEN
 
 web:
   build: .
