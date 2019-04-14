@@ -30,15 +30,18 @@ def separate_keywords(filename):
     # Returns
     separated_words (List of str): List of 6 longest keywords from the file.
     """
-    additionnal_info_re = r'([^\x00-\x7F])|(\([^\(]+\))|(\[[^\[]+\])| \
-        (\w+\d+\w+)|(\d+\w+)|(\w+\d+)|(the)|(hevc)|(psa)|(bluray)|(aac)| \
-        (chs)|(tigole)'
+    additionnal_info_re = re.compile(r'([^\x00-\x7F])|(\([^\(]+\))|'
+        r'(\[[^\[]+\])|([a-z]+\d+[a-z]+)|(\d+[a-z]+)|([a-z]+\d+)|'
+        r'(hevc)|(psa)|(bluray)|(aac)|(chs)|(tigole)')
     separators_re = r"[\s\.-]"
+    ignored_keywords = ['the', 'of', 'a']
     filtered_name = re.sub(additionnal_info_re, '', filename.lower())
     separated_words = [
         x for x in re.split(separators_re, filtered_name)[:-1] if x != '']
+    movie_title = ' '.join(separated_words)
     separated_words.sort(key=len, reverse=True)
-    return separated_words[:6]
+    return (movie_title, [
+        x for x in separated_words[:6] if x not in ignored_keywords])
 
 
 def get_videos_in_directory(full_path):
@@ -66,4 +69,4 @@ def analyze_directory(full_path):
     keywords (List of Lists of str): List of found keywords in the directory.
     """
     movies = get_videos_in_directory(full_path)
-    return [separate_keywords(movie) for movie in movies]
+    return [separate_keywords(movie)[1] for movie in movies]

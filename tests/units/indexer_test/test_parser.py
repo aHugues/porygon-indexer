@@ -29,17 +29,17 @@ def test_weird_filenames():
 
 def test_separate_keywords():
     """Test the separation of keywords."""
-    list1 = separate_keywords('My Super Movie [2019] [FR].mkv')
-    list2 = separate_keywords('the.movie.of.the.year.2018.hevc.aac.mp4')
-    list3 = separate_keywords('Python the movie 2: Return \
+    _, list1 = separate_keywords('My Super Movie [2019] [FR].mkv')
+    _, list2 = separate_keywords('the.movie.of.the.year.2018.hevc.aac.mp4')
+    _, list3 = separate_keywords('Python the movie 2: Return \
         with a mega revenge (2019).mkv')
-    list4 = separate_keywords("the.movie.of.the.year.2018.1080p.x265.hevc. \
+    _, list4 = separate_keywords("the.movie.of.the.year.2018.1080p.x265.hevc. \
         aac.mp4")
 
     assert list1 == ['super', 'movie', 'my']
-    assert list2 == ['movie', 'year', 'of']
+    assert list2 == ['movie', 'year', '2018']
     assert list3 == ['revenge', 'python', 'return', 'movie', 'with', 'mega']
-    assert list4 == ['movie', 'year', 'of']
+    assert list4 == ['movie', 'year', '2018']
 
 
 def test_read_directory():
@@ -65,7 +65,7 @@ def test_analyze_directory():
     movies_keywords = analyze_directory(scanned_dir)
 
     keywords1 = ['super', 'movie', 'my']
-    keywords2 = ['movie', 'year', 'of']
+    keywords2 = ['movie', 'year', '2018']
     keywords3 = ['revenge', 'python', 'return', 'movie', 'with', 'mega']
 
     assert len(movies_keywords) == 3
