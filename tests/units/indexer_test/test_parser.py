@@ -1,3 +1,5 @@
+"""Test the parsing methods for the indexer."""
+
 import os
 
 from indexer.parser import is_video
@@ -5,23 +7,24 @@ from indexer.parser import separate_keywords
 from indexer.parser import get_videos_in_directory
 from indexer.parser import analyze_directory
 
+
 def test_correct_video():
     """Test the detection of true video files."""
-    assert is_video('true_video.mp4') == True
-    assert is_video('true_video.mkv') == True
-    assert is_video('true_video.avi') == True
+    assert is_video('true_video.mp4') is True
+    assert is_video('true_video.mkv') is True
+    assert is_video('true_video.avi') is True
 
 
 def test_non_video():
     """Test the filtering of non-video files."""
-    assert is_video('not_video.mp3') == False
-    assert is_video('not_video.txt') == False
+    assert is_video('not_video.mp3') is False
+    assert is_video('not_video.txt') is False
 
 
 def test_weird_filenames():
     """Test the filtering of non-standard filenames."""
-    assert is_video('true.video.with.dots.MKV') == True
-    assert is_video('NoT.ViDEo.mkv.mp3') == False
+    assert is_video('true.video.with.dots.MKV') is True
+    assert is_video('NoT.ViDEo.mkv.mp3') is False
 
 
 def test_separate_keywords():
