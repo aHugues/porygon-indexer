@@ -1,0 +1,1 @@
+"""Represent the Movie class inherited from the media class."""
