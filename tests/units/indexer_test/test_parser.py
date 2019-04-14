@@ -3,6 +3,7 @@ import os
 from indexer.parser import is_video
 from indexer.parser import separate_keywords
 from indexer.parser import get_videos_in_directory
+from indexer.parser import analyze_directory
 
 def test_correct_video():
     """Test the detection of true video files."""
@@ -29,10 +30,13 @@ def test_separate_keywords():
     list2 = separate_keywords('the.movie.of.the.year.2018.hevc.aac.mp4')
     list3 = separate_keywords('Python the movie 2: Return \
         with a mega revenge (2019).mkv')
+    list4 = separate_keywords("the.movie.of.the.year.2018.1080p.x265.hevc. \
+        aac.mp4")
 
     assert list1 == ['super', 'movie', 'my']
     assert list2 == ['movie', 'year', 'of']
     assert list3 == ['revenge', 'python', 'return', 'movie', 'with', 'mega']
+    assert list4 == ['movie', 'year', 'of']
 
 
 def test_read_directory():
@@ -49,3 +53,19 @@ def test_read_directory():
     assert movie1 in movies
     assert movie2 in movies
     assert movie3 in movies
+
+
+def test_analyze_directory():
+    """Test scanning and parsing of directory for keywords."""
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    scanned_dir = f"{current_dir}/example_directory/movies/"
+    movies_keywords = analyze_directory(scanned_dir)
+
+    keywords1 = ['super', 'movie', 'my']
+    keywords2 = ['movie', 'year', 'of']
+    keywords3 = ['revenge', 'python', 'return', 'movie', 'with', 'mega']
+
+    assert len(movies_keywords) == 3
+    assert keywords1 in movies_keywords
+    assert keywords2 in movies_keywords
+    assert keywords3 in movies_keywords
