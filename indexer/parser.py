@@ -1,11 +1,13 @@
 import os
 import re
 
+
 def is_video(filename):
     """Check if the file has one of the authorized video extensions."""
     authorized_extensions = ['mkv', 'mp4', 'avi']
     extension = filename.split('.')[-1].lower()
     return extension in authorized_extensions
+
 
 def separate_keywords(filename):
     """Separate the most pertinent keywords from a given filename."""
@@ -18,4 +20,11 @@ def separate_keywords(filename):
         x for x in re.split(separators_re, filtered_name)[:-1] if x != '']
     separated_words.sort(key=len, reverse=True)
     return separated_words[:6]
-    
+
+
+def get_videos_in_directory(full_path):
+    """Get the list of video files in a directory given the absolute path."""
+    files = []
+    for (_, _, filenames) in os.walk(full_path):
+        files.extend(filenames)
+    return [element for element in files if is_video(element)]
