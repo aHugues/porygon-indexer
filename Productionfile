@@ -3,6 +3,7 @@ LABEL maintainer="Aurélien Hugues <aurelien.hugues.59@gmail.com>"
 LABEL version="1.0.0"
 LABEL description="Directories indexer for the Porygon project"
 ADD web /app/web
+ADD indexer /app/indexer
 COPY requirements.txt /app
 COPY wsgi.py /app
 WORKDIR /app

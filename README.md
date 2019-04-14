@@ -38,7 +38,7 @@ You can run the tests as standalone using **pytest** (only for unit tests)
 
 ```shell
 pip install pytest pytest-cov pytest-flask
-pytest --cov=web/ --ignore=tests/integration tests
+python -m pytest --cov=web/ --ignore=tests/integration tests
 ```
 
 You can also run the tests using Docker (can include integration tests)
