@@ -2,3 +2,4 @@
 
 from .parser import analyze_directory
 from .media import Media
+from .movie import Movie
