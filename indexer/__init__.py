@@ -1,0 +1,1 @@
+from .omdbservice import QueryService
